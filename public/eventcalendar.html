@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Mentor</title>
+    
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+        .font-family-karla { font-family: karla; }
+        .bg-sidebar { background: rgb(94, 198, 247); }
+        .cta-btn { color: #6e8afb; }
+        .upgrade-btn { background: #7e92f9; }
+        .upgrade-btn:hover { background: #8599fb; }
+        .active-nav-link { background: #7d9cfc; }
+        .nav-item:hover { background: #8094f9; }
+        .account-link:hover { background: #74a2fd; }
+        [x-cloak] { display: none; }
+    </style>
+</head>
+<body class="bg-gray-100 font-family-karla flex">
+
+    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+        <div class="p-6">
+            <a href="" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Mentor</a>
+        </div>
+        <nav class="text-white text-base font-semibold pt-3">
+            <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Dashboard
+            </a>
+            <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Courses
+            </a>
+            <a href="eventcalendar.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+               
+                Schedule
+            </a>
+            <a href="Attendance.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Attendance
+            </a>
+            <a href="Score.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Score
+            </a>
+            <a href="Consult.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Consult
+            </a>
+        </nav>
+</aside>
+    <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
+        <!-- Desktop Header -->
+        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
+            <div class="w-1/2"></div>
+            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                    <img src="">
+            </div>
+        </header>
+        <!-- Mobile Header & Nav -->
+        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+            <div class="flex items-center justify-between">
+                <a  class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Mentor</a>
+            </div>
+
+            <!-- Dropdown Nav -->
+            <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
+                <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-tachometer-alt mr-3"></i>
+                    Dashboard 
+                <a href="eventcalendar.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+            
+                    Schedule
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-cogs mr-3"></i>
+                    Support
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-user mr-3"></i>
+                    My Account
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    Sign Out
+                </a>
+            </nav>
+           
+        </header>
+        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <h1 class="text-3xl text-black pb-6">Calendar</h1>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+        });
+    </script>
+
+    <title>Recurring event editor</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    .custom-repeat-settings .mbsc-textfield-wrapper.mbsc-textfield-wrapper-outline,
+    .custom-repeat-settings.mbsc-textfield-wrapper.mbsc-textfield-wrapper-outline {
+        display: inline-block;
+        margin: 5px;
+    }
+    
+    .custom-repeat-input.mbsc-textfield-wrapper .mbsc-textfield,
+    .custom-repeat-input .mbsc-textfield-wrapper .mbsc-textfield {
+        height: 30px;
+        width: 50px;
+    }
+    
+    .custom-repeat-select-nr.mbsc-textfield-wrapper .mbsc-select.mbsc-textfield,
+    .custom-repeat-select-nr .mbsc-textfield-wrapper .mbsc-select.mbsc-textfield {
+        width: 70px;
+        padding-right: 30px;
+    }
+    
+    .custom-repeat-select-month.mbsc-textfield-wrapper .mbsc-select.mbsc-textfield,
+    .custom-repeat-select-month .mbsc-textfield-wrapper .mbsc-select.mbsc-textfield {
+        width: 140px;
+        padding-right: 30px;
+    }
+    
+    .custom-repeat-input.custom-specific-date input.mbsc-textfield {
+        width: 140px;
+    }
+    
+    .custom-repeat-desc {
+        font-size: 12px;
+        font-weight: normal;
+        color: #555;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    
+    .custom-repeat-input .mbsc-select-icon.mbsc-select-icon-outline,
+    .custom-repeat-select .mbsc-select-icon.mbsc-select-icon-outline {
+        width: 16px;
+        top: 3px;
+        right: 10px;
+    }
+    
+    .custom-repeat-settings {
+        font-weight: 600;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .mbsc-ios .custom-repeat-settings {
+        background: #fff;
+    }
+    
+    .mbsc-ios-dark .custom-repeat-settings {
+        background: #2b2b2b;
+    }
+    
+    .mbsc-material .custom-repeat-settings {
+        background: #f5f5f5;
+    }
+    
+    .mbsc-material-dark .custom-repeat-settings {
+        background: #0a0a0a;
+    }
+    
+    /* checkbox */
+    
+    .custom-repeat-checkbox-cont .mbsc-checkbox.mbsc-form-control-wrapper {
+        display: inline-block;
+        padding-left: 25px;
+        padding-right: 10px;
+        background: transparent;
+    }
+    
+    .custom-repeat-checkbox-cont .mbsc-checkbox .mbsc-checkbox-box {
+        left: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+    }
+    
+    .custom-repeat-checkbox-cont .mbsc-checkbox.mbsc-form-control-wrapper:after,
+    .custom-repeat-checkbox-cont .mbsc-checkbox.mbsc-form-control-wrapper:before {
+        border: 0;
+    }
+    
+    .custom-repeat-checkbox-cont .mbsc-checkbox .mbsc-checkbox-box:after {
+        width: 10px;
+        height: 6px;
+        top: 4px;
+        left: 3px;
+    }
+    
+    .custom-condition-cont .mbsc-radio.mbsc-form-control-wrapper {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    
+    .custom-condition-cont .mbsc-ios.mbsc-form-control-wrapper:after,
+    .custom-condition-cont .mbsc-ios.mbsc-form-control-wrapper:before {
+        border-color: transparent;
+    }
+    
+    .custom-condition-cont .mbsc-radio-box {
+        top: 40%;
+    }
+    
+    .custom-condition-cont .mbsc-material.mbsc-radio-box:after,
+    .custom-condition-cont .mbsc-windows.mbsc-radio-box:after {
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+        margin-left: -4px;
+        border-radius: 8px;
+    }
+    
+    .custom-repeat-settings .mbsc-form-control-input {
+        z-index: 0;
+    }
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-recurring-event-add-edit-dialog">
+  <div style="height:100%">
+      <div id="demo-add-delete-event"></div>
+    
+    <div id="demo-add-popup">
+    
+        <div class="mbsc-form-group">
+            <label>
+                Title
+                <input mbsc-input id="recurring-event-title">
+            </label>
+            <label>
+                Description
+                <textarea mbsc-textarea id="recurring-event-desc"></textarea>
+            </label>
+        </div>
+    
+        <div class="mbsc-form-group">
+            <label>
+                All-day
+                <input mbsc-switch id="recurring-event-all-day" type="checkbox" />
+            </label>
+            <label>
+                Starts
+                <input mbsc-input id="recurring-event-start-input" />
+            </label>
+            <label>
+                Ends
+                <input mbsc-input id="recurring-event-end-input" />
+            </label>
+            <div id="recurring-event-date"></div>
+            <label>
+                <input mbsc-input data-label="Repeats" data-dropdown="true" id="recurring-event-repeat" />
+            </label>
+    
+            <div id="demo-custom-repeat-cont">
+                <div>
+                    <div mbsc-segmented-group>
+                        <label>
+                            Daily
+                            <input type="radio" mbsc-segmented name="custom-repeat-type" value="daily" checked>
+                        </label>
+                        <label>
+                            Weekly
+                            <input type="radio" mbsc-segmented name="custom-repeat-type" value="weekly">
+                        </label>
+                        <label>
+                            Monthly
+                            <input type="radio" mbsc-segmented name="custom-repeat-type" value="monthly">
+                        </label>
+                        <label>
+                            Yearly
+                            <input type="radio" mbsc-segmented name="custom-repeat-type" value="yearly">
+                        </label>
+                    </div>
+    
+                    <div class="custom-repeat-settings">
+                        Repeat every
+                        <label class="custom-repeat-input">
+                            <input id="custom-repeat-nr" min="1" mbsc-input data-input-style="outline" value="1" />
+                        </label>
+                        <span class="custom-repeat-text custom-repeat-daily">days</span>
+                        <span class="custom-repeat-text custom-repeat-weekly">weeks</span>
+                        <span class="custom-repeat-text custom-repeat-monthly">
+                            months on day
+                            <label class="custom-repeat-input custom-repeat-select-nr">
+                                <input id="custom-repeat-month-day" mbsc-input data-dropdown="true" data-input-style="outline" />
+                            </label>
+                        </span>
+                        <span class="custom-repeat-text custom-repeat-yearly">
+                            years on
+                            <label class="custom-repeat-input custom-repeat-select-month">
+                                <input mbsc-input id="custom-repeat-month-input" data-dropdown="true" data-input-style="outline" />
+                            </label>
+                            <label class="custom-repeat-input custom-repeat-select-nr">
+                                <input id="custom-repeat-year-day" mbsc-input data-dropdown="true" data-input-style="outline" />
+                            </label>
+                            <select id="custom-repeat-month" data-input-style="outline">
+                                <option value="1" selected>January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </span>
+                        <p class="custom-repeat-desc custom-repeat-text custom-repeat-daily">The event will be repeated every day or every x days, depending on the value</p>
+                        <p class="custom-repeat-desc custom-repeat-text custom-repeat-weekly">The event will be repeated every x weeks on specific weekdays</p>
+                        <p class="custom-repeat-desc custom-repeat-text custom-repeat-monthly">The event will be repeated every x month on specific day of the month</p>
+                        <p class="custom-repeat-desc custom-repeat-text custom-repeat-yearly">The event will be repeated every x years on specific day of a specific month</p>
+    
+                        <div class="custom-repeat-checkbox-cont custom-repeat-text custom-repeat-weekly">
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="SU" name="Sunday" checked>
+                            Sun
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="MO" name="Monday">
+                            Mon
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="TU" name="Tuesday">
+                            Tue
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="WE" name="Wednesday">
+                            Wed
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="TH" name="Thursday">
+                            Thu
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="FR" name="Friday">
+                            Fri
+                        </label>
+                            <label>
+                            <input mbsc-checkbox class="custom-repeat-weekdays" type="checkbox" value="SA" name="Saturday">
+                            Sat
+                        </label>
+                        </div>
+    
+                        <div>Stop condition</div>
+                        <div class="custom-condition-cont">
+                            <label>
+                                <input mbsc-radio type="radio" name="custom-repeat-condition" value="never" data-description="The event will repeat indefinitely" checked> Never stop
+                            </label>
+                            <label>
+                                <input mbsc-radio type="radio" name="custom-repeat-condition" value="until" data-description="The event will run until it reaches a specific date">
+                                Run until a specific date
+                                <label class="custom-repeat-input custom-specific-date">
+                                    <input id="custom-repeat-date" mbsc-input data-input-style="outline" placeholder="Select a date" />
+                                </label>
+                            </label>
+                            <label>
+                                <input mbsc-radio type="radio" name="custom-repeat-condition" value="count" data-description="The event will repeat until it reaches a certain amount of occurrences">
+                                Run until it reaches
+                                <label class="custom-repeat-input">
+                                    <input id="custom-repeat-until" mbsc-input min="1" data-input-style="outline" value="1" />
+                                </label> occurrences
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+         
+            <div class="mbsc-button-group">
+                <button class="mbsc-button-block" id="recurring-event-delete" mbsc-button data-color="danger" data-variant="outline">Delete event</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    mobiscroll.setOptions({
+        locale: mobiscroll.localeEn,                       
+        theme: 'ios',                                     
+            themeVariant: 'light'                         
+    });
+    
+    $(function () {
+        var oldEvent;
+        var tempEvent = {};
+        var deleteEvent;
+        var restoreEvent;
+        var customDate;
+        var calendar;
+        var addEditPopup;
+        var eventDate;
+        var $title = $('#recurring-event-title');
+        var $description = $('#recurring-event-desc');
+        var $allDay = $('#recurring-event-all-day');
+        var $statusFree = $('#recurring-event-status-free');
+        var $statusBusy = $('#recurring-event-status-busy');
+        var $deleteButton = $('#recurring-event-delete');
+        var $customRepeat = $('#demo-custom-repeat-cont');
+        var $repeat = $('#recurring-event-repeat');
+        var $until = $('#custom-repeat-until');
+        var repeatData = [{
+            value: 'norepeat',
+            text: 'Does not repeat'
+        }, {
+            value: 'daily',
+            text: 'Daily'
+        }, {
+            value: 'weekly',
+            text: 'Weekly'
+        }, {
+            value: 'monthly',
+            text: 'Monthly'
+        }, {
+            value: 'yearly',
+            text: 'Yearly'
+        }, {
+            value: 'weekday',
+            text: 'Every weekday (Monday to Friday)'
+        }, {
+            value: 'custom',
+            text: 'Custom'
+        }];
+        var select;
+        var monthSelect;
+        var monthDaySelect;
+        var yearDaySelect;
+        var datePickerResponsive = {
+            medium: {
+                controls: ['calendar'],
+                touchUi: false
+            }
+        };
+        var selectResponsive = {
+            xsmall: {
+                touchUi: true
+            },
+            small: {
+                touchUi: false
+            }
+        };
+        var datetimePickerResponsive = {
+            medium: {
+                controls: ['calendar', 'time'],
+                touchUi: false
+            }
+        };
+        var myData = [{
+            id: 1,
+            start: '2022-04-08T13:00',
+            end: '2022-04-08T13:30',
+            title: 'PHP',
+            description: '',
+            allDay: false,
+            free: true,
+            color: '#26c57d'
+        }, {
+            id: 2,
+            start: '2022-04-18T15:00',
+            end: '2022-04-18T16:00',
+            title: 'CSS',
+            description: '',
+            allDay: false,
+            free: false,
+            color: '#fd966a'
+        }, {
+            id: 3,
+            start: '2022-04-17T18:00',
+            end: '2022-04-17T22:00',
+            title: 'JS',
+            description: '',
+            allDay: false,
+            free: true,
+            color: '#37bbe4'
+        }, {
+            id: 4,
+            start: '2022-04-19T10:30',
+            end: '2022-04-19T11:30',
+            title: 'Flutter ',
+            description: '',
+            allDay: false,
+            free: false,
+            color: '#d00f0f'
+        }];
+        var days = [{
+            name: 'Sunday',
+            short: 'SU',
+        }, {
+            name: 'Monday',
+            short: 'MO',
+        }, {
+            name: 'Tuesday',
+            short: 'TU',
+        }, {
+            name: 'Wednesday',
+            short: 'WE',
+        }, {
+            name: 'Thursday',
+            short: 'TH',
+        }, {
+            name: 'Friday',
+            short: 'FR',
+        }, {
+            name: 'Saturday',
+            short: 'SA',
+        }];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var daySelect;
+        var $repeatType = $('input[name=custom-repeat-type]');
+    
+        // set dates by selected date
+        function updateOptionDates() {
+            var d = new Date(tempEvent.start);
+            var weekday = d.getDay();
+            var monthday = d.getDate();
+            var newData = repeatData.slice(0);
+    
+            for (var i = 0; i < newData.length; ++i) {
+                var item = newData[i];
+                switch (item.value) {
+                    case 'weekly':
+                        item.text = 'Weekly on ' + days[weekday].name;
+                        break;
+                    case 'monthly':
+                        item.text = 'Monthly on day ' + monthday;
+                        break;
+                    case 'yearly':
+                        item.text = 'Annually on ' + months[d.getMonth()] + ' ' + monthday;
+                        break;
+                }
+            }
+    
+            select.setOptions({ data: newData });
+        }
+    
+        
+        function populateMonthDays(month, selectInst) {
+            var options = '';
+            var days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var newValues = [];
+    
+            for (var i = 1; i <= days[month - 1]; i++) {
+                newValues.push(i.toString());
+            }
+            selectInst.setOptions({ data: newValues });
+        }
+    
+   
+        function updateContent(type) {
+            $('.custom-repeat-text').each(function () {
+                var $cont = $(this);
+    
+                if ($cont.hasClass('custom-repeat-' + type)) {
+                    $cont.show();
+                } else {
+                    $cont.hide();
+                }
+            });
+        }
+    
+      
+        function setCustomText(recurring) {
+            setTimeout(function () {
+                var type = $('input[name=custom-repeat-type]:checked').val();
+                var condition = $('input[name="custom-repeat-condition"]:checked').val();
+                var interval = +$('#custom-repeat-nr').val();
+                var weekDayNames = [];
+                var rec;
+                var customText;
+    
+                $.each($('.custom-repeat-weekdays:checked'), function () {
+                    weekDayNames.push($(this).attr('name'));
+                });
+    
+                switch (type) {
+                    case 'daily':
+                        customText = interval > 1 ? ('Every ' + interval + ' days') : 'Daily';
+                        break;
+                    case 'weekly':
+                        customText = interval > 1 ? ('Every ' + interval + ' weeks') : 'Weekly';
+                        customText += ' on ' + weekDayNames.join(', ');
+                        break;
+                    case 'monthly':
+                        customText = interval > 1 ? ('Every ' + interval + ' months') : 'Monthly';
+                        customText += ' on day ' + monthDaySelect.getVal();
+                        break;
+                    case 'yearly':
+                        customText = interval > 1 ? ('Every ' + interval + ' years') : 'Annualy';
+                        customText += ' on ' + $('#custom-repeat-month option:selected').text() + ' ' + yearDaySelect.getVal();
+                        break;
+                }
+    
+                switch (condition) {
+                    case 'until':
+                        customText += ' until ' + mobiscroll.util.datetime.formatDate('MMMM D, YYYY', new Date(customDate.getVal()));
+                        break;
+                    case 'count':
+                        customText += ', ' + $until.val() + ' times';
+                        break;
+                }
+    
+                if (recurring && recurring.interval) {
+                    var newData = repeatData.slice(0);
+                    newData.push({ value: 'custom-value', text: customText })
+                    select.setOptions({ data: newData });
+                    select.setVal('custom-value');
+                }
+            });
+        }
+    
+        // set custom values to default
+        function resetCustomValues() {
+            $('input[name=custom-repeat-type][value="daily"]').mobiscroll('getInst').checked = true;
+            $('#custom-repeat-nr').val(1);
+            $('input[name=custom-repeat-condition][value="never"]').mobiscroll('getInst').checked = true;
+            $until.val(1);
+            monthSelect.setVal(1);
+            monthDaySelect.setVal(1)
+            yearDaySelect.setVal(1);
+            $.each($('.custom-repeat-weekdays'), function () {
+                $(this).mobiscroll('getInst').checked = $(this).val() === 'SU';
+            });
+            select.setVal('norepeat');
+    
+            showHideCustom();
+        }
+    
+        function setCustomSettings() {
+            var selected = select.getVal();
+    
+            if (selected === 'custom' || selected === 'custom-value') {
+             
+                var type = $('input[name=custom-repeat-type]:checked').val();
+                var condition = $('input[name="custom-repeat-condition"]:checked').val();
+                var weekDays = [];
+                var rec;
+                var customText;
+    
+                $.each($('.custom-repeat-weekdays:checked'), function () {
+                    weekDays.push($(this).val());
+                });
+    
+                rec = {
+                    repeat: type,
+                    interval: +$('#custom-repeat-nr').val()
+                };
+    
+                switch (type) {
+                    case 'weekly':
+                        rec.weekDays = weekDays.join(',');
+                        break;
+                    case 'monthly':
+                        rec.day = monthDaySelect.getVal();
+                        break;
+                    case 'yearly':
+                        rec.day = yearDaySelect.getVal();
+                        rec.month = monthSelect.getVal();
+                        break;
+                }
+    
+                switch (condition) {
+                    case 'until':
+                        rec.until = customDate.getVal();
+                        break;
+                    case 'count':
+                        rec.count = +$until.val();
+                        break;
+                }
+    
+                tempEvent.recurring = rec;
+            }
+        }
+    
+        function showHideCustom() {
+            setTimeout(function () {
+                if (select.getVal() !== 'custom' && select.getVal() !== 'custom-value') {
+                    $customRepeat.hide();
+                } else {
+                    $customRepeat.show();
+                }
+            });
+        }
+    
+        function navigateTo(date) {
+            var rec = tempEvent.recurring;
+            var stDate = new Date(tempEvent.start);
+            var d = date || stDate;
+            var nextYear = 0;
+    
+            // navigate the calendar to the correct view
+            if (rec && rec.repeat === 'yearly') {
+                if (d.getMonth() + 1 > +rec.month && d.getDay() > +rec.day) {
+                    nextYear = 1;
+                }
+                calendar.navigate(new Date(stDate.getFullYear() + nextYear, rec.month - 1, rec.day));
+            } else {
+                calendar.navigate(stDate);
+            }
+        }
+    
+        function createAddPopup(elm) {
+            // hide delete button inside add popup
+            $deleteButton.parent().hide();
+    
+            deleteEvent = true;
+            restoreEvent = false;
+    
+            // set popup header text and buttons for adding
+            addEditPopup.setOptions({
+                headerText: 'New event',                   
+                buttons: ['cancel', {                    
+                    text: 'Add',
+                    keyCode: 'enter',
+                    handler: function () {
+                        setCustomSettings();
+    
+                        calendar.updateEvent({
+                            id: tempEvent.id,
+                            title: tempEvent.title,
+                            allDay: tempEvent.allDay,
+                            start: tempEvent.start,
+                            end: tempEvent.end,
+                            color: tempEvent.color,
+                            recurring: tempEvent.recurring
+                        });
+    
+                        navigateTo();
+    
+                        deleteEvent = false;
+                        addEditPopup.close();
+                    },
+                    cssClass: 'mbsc-popup-button-primary'
+                }]
+            });
+    
+            // fill popup with a new event data
+            $title.mobiscroll('getInst').value = tempEvent.title;
+            $description.mobiscroll('getInst').value = '';
+            $allDay.mobiscroll('getInst').checked = true;
+            eventDate.setVal([tempEvent.start, tempEvent.end]);
+            $statusBusy.mobiscroll('getInst').checked = true;
+            eventDate.setOptions({ controls: ['date'], responsive: datePickerResponsive });
+    
+            // set anchor for the popup
+            addEditPopup.setOptions({ anchor: elm });
+    
+            updateOptionDates();
+            resetCustomValues();
+    
+            addEditPopup.open();
+        }
+    
+        function createEditPopup(args) {
+            var ev = args.event;
+            // show delete button inside edit popup
+            $deleteButton.parent().show();
+    
+            deleteEvent = false;
+            restoreEvent = true;
+    
+            // set popup header text and buttons for editing
+            addEditPopup.setOptions({
+                headerText: 'Edit event',                  
+                buttons: ['cancel', {                      
+                    text: 'Save',
+                    keyCode: 'enter',
+                    handler: function () {
+                        setCustomSettings();
+    
+                        var date = eventDate.getVal();
+
+                        // update event with the new properties on save button click
+                        calendar.updateEvent({
+                            id: ev.id,
+                            title: $title.val(),
+                            description: $description.val(),
+                            allDay: $allDay.mobiscroll('getInst').checked,
+                            start: date[0],
+                            end: date[1],
+                            free: $statusFree.mobiscroll('getInst').checked,
+                            color: ev.color,
+                            recurring: tempEvent.recurring,
+                        });
+    
+                        // navigate the calendar to the correct view
+                        navigateTo(date[0]);
+    
+                        restoreEvent = false;
+                        addEditPopup.close();
+                    },
+                    cssClass: 'mbsc-popup-button-primary'
+                }]
+            });
+    
+            // fill popup with the selected event data
+            $title.mobiscroll('getInst').value = ev.title || '';
+            $description.mobiscroll('getInst').value = ev.description || '';
+            $allDay.mobiscroll('getInst').checked = ev.allDay || false;
+            eventDate.setVal([ev.start, ev.end]);
+    
+            if (ev.free) {
+                $statusFree.mobiscroll('getInst').checked = true;
+            } else {
+                $statusBusy.mobiscroll('getInst').checked = true;
+            }
+    
+            // change event date settings based on the allDay
+            eventDate.setOptions({
+                controls: ev.allDay ? ['date'] : ['datetime'],
+                responsive: ev.allDay ? datePickerResponsive : datetimePickerResponsive
+            });
+    
+            // set anchor for the popup
+            addEditPopup.setOptions({ anchor: args.domEvent.currentTarget });
+    
+            // set repeat type from recurring rule
+            var repeatType,
+                rec = ev.recurring;
+    
+            if (rec) {
+                if (rec.interval) {
+                    var condition;
+    
+                    repeatType = 'custom-value';
+    
+                    $('input[name=custom-repeat-type][value=' + rec.repeat + ']').mobiscroll('getInst').checked = true;
+    
+                    $('#custom-repeat-nr').val(rec.interval);
+    
+                    if (rec.until) {
+                        condition = 'until';
+                    } else if (rec.count) {
+                        condition = 'count';
+                    } else {
+                        condition = 'never';
+                    }
+    
+                    $('input[name=custom-repeat-condition][value=' + condition + ']').mobiscroll('getInst').checked = true;
+    
+                    if (rec.weekDays) {
+                        $.each($('.custom-repeat-weekdays'), function () {
+                            if (rec.weekDays.split(',').indexOf($(this).val()) > 0) {
+                                $(this).mobiscroll('getInst').checked = true;
+                            }
+                        });
+                    }
+    
+                    if (rec.day) {
+                        if (rec.repeat === 'yearly') {
+                            yearDaySelect.setVal(rec.day);
+                            if (rec.month) {
+                                monthSelect.setVal(rec.month);
+                            }
+                        } else {
+                            monthDaySelect.setVal(rec.day)
+                        }
+                    }
+                    updateContent(rec.repeat);
+                } else if (rec.weekDays === 'MO,TU,WE,TH,FR') {
+                    repeatType = 'weekday';
+                } else {
+                    repeatType = rec.repeat;
+                }
+            } else {
+                repeatType = 'norepeat';
+                resetCustomValues();
+            }
+    
+            select.setVal(repeatType);
+            updateOptionDates();
+            showHideCustom();
+            addEditPopup.open();
+        }
+    
+        updateContent('daily');
+    
+        // event calendar instance
+        calendar = $('#demo-add-delete-event').mobiscroll().eventcalendar({
+            clickToCreate: 'double',                      
+            dragToCreate: true,                           
+            dragToMove: true,                              
+            dragToResize: true,                            
+            view: {                                        
+                calendar: { labels: true }
+            },
+            data: myData,                                  
+            onEventClick: function (args) {                
+                var event = args.event.original ? args.event.original : args.event;
+    
+                oldEvent = $.extend({}, event);
+                tempEvent = event;
+    
+                setCustomText(event.recurring);
+    
+                if (!addEditPopup.isVisible()) {
+                    createEditPopup(args);
+                }
+            },
+            onEventCreated: function (args) {              
+                addEditPopup.close();
+    
+                // store temporary event
+                tempEvent = args.event;
+                createAddPopup(args.target);
+            }
+        }).mobiscroll('getInst');
+    
+        // popup for event create/edit
+        addEditPopup = $('#demo-add-popup').mobiscroll().popup({
+            display: 'bottom',                             
+            contentPadding: false,
+            fullScreen: true,
+            scrollLock: false,
+            height: 500,                                   
+            onClose: function () {                         
+                var newData = repeatData.slice(0);
+                select.setOptions({ data: newData.filter(function (item) { return item.value !== 'custom-value'; }) });
+                if (deleteEvent) {
+                    calendar.removeEvent(tempEvent);
+                } else if (restoreEvent) {
+                    calendar.updateEvent(oldEvent);
+                }
+            },
+            responsive: {                                 
+                medium: {
+                    display: 'anchored',                   
+                    width: 510,                          
+                    fullScreen: false,
+                    touchUi: false
+                }
+            }
+        }).mobiscroll('getInst');
+    
+        $title.on('input', function (ev) {
+            // update current event's title
+            tempEvent.title = ev.target.value;
+        });
+    
+        $description.on('change', function (ev) {
+            // update current event's title
+            tempEvent.description = ev.target.value;
+        });
+    
+        $allDay.on('change', function () {
+            var checked = this.checked
+    
+            // change event date settings based on the allDay
+            eventDate.setOptions({
+                controls: checked ? ['date'] : ['datetime'],
+                responsive: checked ? datePickerResponsive : datetimePickerResponsive
+            });
+    
+            // update current event's allDay property
+            tempEvent.allDay = checked;
+        });
+    
+        eventDate = $('#recurring-event-date').mobiscroll().datepicker({
+            controls: ['date'],
+            select: 'range',
+            startInput: '#recurring-event-start-input',
+            endInput: '#recurring-event-end-input',
+            showRangeLabels: false,
+            touchUi: true,
+            responsive: datePickerResponsive,              
+            onChange: function (args) {
+                var date = args.value;
+    
+                // update event's start date
+                tempEvent.start = date[0];
+                tempEvent.end = date[1];
+                updateOptionDates();
+            }
+        }).mobiscroll('getInst');
+    
+        $deleteButton.on('click', function () {
+            // delete current event on button click
+            calendar.removeEvent(oldEvent);
+            addEditPopup.close();
+        });
+    
+        $repeatType.change(function (ev) {
+            updateContent(ev.target.value);
+        });
+    
+        select = $repeat.mobiscroll().select({
+            data: repeatData,                              
+            responsive: selectResponsive,                  
+            onChange: function (event, inst) {
+                var d = new Date(tempEvent.start);
+                var weekday = d.getDay();
+                var monthday = d.getDate();
+    
+                // set recurring option
+                switch (event.value) {
+                    case 'daily':
+                        tempEvent.recurring = {
+                            repeat: 'daily'
+                        };
+                        break;
+                    case 'weekly':
+                        tempEvent.recurring = {
+                            repeat: 'weekly',
+                            weekDays: days[weekday].short  
+                        };
+                        break;
+                    case 'monthly':
+                        tempEvent.recurring = {
+                            repeat: 'monthly',
+                            day: monthday
+                        };
+                        break;
+                    case 'yearly':
+                        tempEvent.recurring = {
+                            repeat: 'yearly',
+                            day: monthday,
+                            month: d.getMonth() + 1
+                        };
+                        break;
+                    case 'weekday':
+                        tempEvent.recurring = {
+                            repeat: 'weekly',
+                            weekDays: 'MO,TU,WE,TH,FR'     
+                        };
+                        break;
+                    case 'custom':
+                    case 'custom-value':
+                        updateContent($('input[name=custom-repeat-type]:checked').val());
+                        customDate.setVal(d);
+                        $customRepeat.show();
+                        break;
+                    default:
+                        tempEvent.recurring = null;
+                }
+    
+                showHideCustom();
+            }
+        }).mobiscroll('getInst');
+    
+        monthSelect = $('#custom-repeat-month').mobiscroll().select({
+            responsive: selectResponsive,                 
+            inputElement: document.getElementById('custom-repeat-month-input'),
+            onChange: function (event, inst) {
+                populateMonthDays(+event.value, yearDaySelect)
+            }
+        }).mobiscroll('getInst');
+    
+        monthDaySelect = $('#custom-repeat-month-day').mobiscroll().select({
+            responsive: selectResponsive,                 
+            maxWidth: 80
+        }).mobiscroll('getInst');
+    
+        yearDaySelect = $('#custom-repeat-year-day').mobiscroll().select({
+            responsive: selectResponsive,                 
+            maxWidth: 80
+        }).mobiscroll('getInst');
+    
+        populateMonthDays(1, monthDaySelect);
+        populateMonthDays(1, yearDaySelect);
+        monthDaySelect.setVal('1');
+        yearDaySelect.setVal('1');
+    
+        customDate = $('#custom-repeat-date').mobiscroll().datepicker({
+            controls: ['calendar'],
+            display: 'anchored',
+            touchUi: false,
+            dateFormat: 'YYYY-MM-DD',                    
+            returnFormat: 'iso8601',
+            onOpen: function () {
+                $('input[name=custom-repeat-condition][value=until]').click();
+            }
+        }).mobiscroll('getInst');
+    
+        $until.on('click', function () {
+            $('input[name=custom-repeat-condition][value=count]').click();
+        });
+    
+    });
+</script>
+
+</body>
+</html>
